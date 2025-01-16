@@ -16,7 +16,6 @@
 #define PeanutKing_Soccer_V4_H
 
 #include <pins_arduino.h>
-#include "IICIT.h"
 #include "PeanutKingDef.h"
 #include "SlowSoftI2CMaster.h"
 #include <SPI.h>				// must include this here (or else IDE can't find it)
@@ -215,14 +214,11 @@ class PeanutKingSoccerV4 {
     bluetoothAttributes(void);
   
   uint8_t colorReadAll(void);
-  IICIT::status_t rxCpltCallback(const IICIT::status_t status);
   void 
     init(uint8_t = 0),
     // autoScanning(void),
     enableScanning(bool, uint16_t, bool),
     dataFetch(void),
-    I2CSensorRead(IICIT::Handle handle, uint8_t sensor, uint8_t length),
-    I2CSensorSend(IICIT::Handle handle, uint8_t sensor, uint8_t *data, uint8_t length),
     // I2CSend(int8_t addr, uint8_t *data, uint8_t length),
     // I2CRead(int8_t addr, uint8_t *data, uint8_t length),
     setColorBL(uint8_t r, uint8_t g, uint8_t b, uint8_t w),
@@ -336,9 +332,6 @@ class PeanutKingSoccerV4 {
     btDistance = 0,
     btRotate = 0;
 
-  IICIT::Handle compssHandle;
-  IICIT::Handle senbrdHandle;
-  IICIT::Handle topbrdHandle;
   private:
   void ULT_Echo_dect(uint8_t);
   static void ULT_Echo_dect_0();
